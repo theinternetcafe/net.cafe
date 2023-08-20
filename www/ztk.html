@@ -1,0 +1,31 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+const markdownString = `
+# ZTK
+
+## Who I am
+* Software Engineer
+* Blue Teamer
+* Seasoned Packet Voyeur
+* Infrastructure Guru
+* Love Warrior
+
+## Statements of values
+* Freedom of thought and expression
+* Freedom to withdraw consent
+* Trust depends on specificity and context
+* Hold people accountable early
+* Speak plainly and authentically
+* Apologize through action and sacrifice
+* Write the least amount of code as is readable
+* Keep it simple, silly!
+`;
+// Append to the document body
+document.body.innerHTML = marked.parse(markdownString);
+</script>
+</body>
+</html>
