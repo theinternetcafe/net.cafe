@@ -1,0 +1,27 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+const markdownString = `
+# hktr
+
+Discord: hackterr
+Twitter: NA
+Sites: [Redacted]
+
+
+## Who I am
+* Risk Consulting Professional
+* Hacker
+* Homelabber
+
+## Statements of values
+* Go hard or go home
+`;
+// Append to the document body
+document.body.innerHTML = marked.parse(markdownString);
+</script>
+</body>
+</html>
