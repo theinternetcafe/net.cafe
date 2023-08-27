@@ -1,0 +1,111 @@
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&display=swap" rel="stylesheet">
+
+    <script type="importmap">
+    {
+        "imports": {
+        "three": "https://unpkg.com/three@0.155.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.155.0/examples/jsm/"
+        }
+    }
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+    </style>
+
+</head>
+<body style="margin: 0px;">
+
+<h1 style="position: fixed; padding:0.5rem; top: 10%; left:50%; text-align: center; transform: translate(-50%,0%); background-color: red; color: white;">IF YOU'RE BORED YOU CAN ROTATE A COW IN YOUR BROWSER</h1>
+
+<h1 style="position: fixed; padding:0.5rem; bottom: 10%; left:50%; text-align: center; transform: translate(-50%,0%); background-color: red; color: white;">IT'S FREE AND THE COPS CAN'T STOP YOU</h1>
+<script type="module">
+
+import * as THREE from 'three';
+import { OBJLoader } from 'three/addons/loaders/OBJLoader.js';
+
+var render;
+var scene;
+var camera;
+
+document.addEventListener('DOMContentLoaded', async function(event) {
+    window.requestAnimationFrame = (function() {
+        return window.requestAnimationFrame;
+    })();
+ 
+    function animateScene() {
+        requestAnimationFrame(animateScene);
+ 
+        cow.rotation.y += 0.02;
+ 
+        renderScene();
+    }
+ 
+    function createCow() {
+        return new Promise((resolve, reject) => {
+            const material = new THREE.MeshBasicMaterial({ color: '#ffffff' })
+            const loader = new OBJLoader();
+
+            loader.load(
+                'cow.obj',
+                function ( cow ) {
+                    cow.children[0].material = material
+                    resolve(cow);
+                },
+                () => {},
+                (err) => {
+                    reject(err)
+                }
+            );
+        })
+    }
+ 
+    function startScene(cow) {
+        render = new THREE.WebGLRenderer();
+        render.setSize(document.body.clientWidth, document.body.clientHeight);
+ 
+        document.body.appendChild( render.domElement );
+
+        scene = new THREE.Scene();
+        var aspect = document.body.clientWidth / document.body.clientHeight;
+
+        const ambientLight = new THREE.AmbientLight( 0xffffff );
+		scene.add( ambientLight );
+ 
+        cow.position.set(0, -90, -500);
+        scene.add(cow);
+
+        camera = new THREE.PerspectiveCamera(45, aspect);
+        camera.position.set(0, 0, 0);
+        camera.lookAt(scene.position);
+        scene.add(camera);
+
+        window.onresize = onWindowResize
+    }
+
+    function onWindowResize() {
+
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+
+        render.setSize( window.innerWidth, window.innerHeight );
+
+    }
+ 
+    function renderScene() {
+        render.render(scene, camera);
+    }
+ 
+    const cow = await createCow();
+    startScene(cow);
+    animateScene();
+    renderScene();
+});
+</script>
+</body>
+</html>
