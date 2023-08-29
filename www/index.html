@@ -3,6 +3,8 @@
     <title>Internet Cafe</title>
     <style>
         body {
+            padding: 0;
+            margin: 0;
             background-color: #0060a9;
             color: #000000;
             font-family: Arial, Helvetica, sans-serif;
@@ -13,8 +15,7 @@
         
         .column {
             position: relative;
-            top: -5vw;
-            background-color: #0060a9;
+            top: 0vw;
             height: 120vh;
             margin: auto 10;
             width: 26vw;
@@ -23,15 +24,35 @@
             z-index: 2;
         }
 
+        #column-1 {
+            z-index: 1;
+            height: 100vh;
+        }
+
+        #column-2 {
+            z-index: 2;
+            height: 100vh;
+            padding: 0vh 5vw 0vh 5vw;
+        }
+
+        #column-3 {
+            z-index: 1;
+            height: 100vh;
+        }
+
         .column-body {
             position: relative;
             top: -5vw;
             background-color: #ffffff;
-            height: 120vh;
-            margin: 5vh 0vw;
+            height: auto;
+            margin: 10vh 0vw;
             width: 26vw;
             float: left;
             z-index: 3;
+        }
+
+        .column-footer {
+            height: 10vh;
         }
 
         .title {
@@ -55,7 +76,7 @@
         .event {
             rotate: -10deg;
             text-align: left;   
-            font-size: 0.65rem;
+            font-size: 1rem;
             margin: 2.5vw 0vw 0vw 2vw;
         }
 
@@ -65,36 +86,71 @@
             transform: skew(10deg, 0deg);
             position: relative;
             left: -5vw;
+        }        
+        
+        #logo-top {
+            width: 50vw;
+            margin: 0vh 0vw 2vh 0vw;
         }
 
         #logobox {
-            background-color: #0060a9; 
             transform: skew(0deg, -10deg);
-            padding: 1vw 1vw 3vw 0vw;
+            padding: 1vw 1vw 1vw 0vw;
             position: relative;
+            visibility: visible;
+        }
+
+        #logobox-top {
+            height: auto;
+            position: absolute;
+            visibility: hidden;
         }
 
         .partner-logo {
-            width: 20vw;
+            width: 16vw;
             margin: 2.5vw 0vw 0vw 0vw;
             transform: skew(0deg, -10deg);
         }
 
-        @media only screen and (max-width: 600px) {
+        #footer {
+            position: absolute;
+            bottom: -10vh;
+            clear: both;
+            width: 100%;
+            height: 24vh;
+            padding-top: 1vh;
+            padding-left: 1vw;
+            margin: 0vh 0vw 0vh 0vw;
+            background-color: #f8991d;
+            font-size: 1.0rem;
+            color: #ffffff;
+            z-index: 0;
+            display: flex;
+        }
+
+        @media only screen and (max-width: 768px) {
         /* For mobile phones: */
             .column {
                 position: relative;
-                top: -5vw;
+                top: 0vh;
                 background-color: #ffffff;
-                height: 120vh;
+                height: auto;
                 margin: auto 10;
                 width: 90vw;
                 rotate: 0deg;
                 float: left;
             }
 
+            .column-body {
+                position: relative;
+                top: 0vh;
+                width: 90vw;
+                margin: 0;
+                height: auto;
+            }
+
             .title {
-                margin: 8vw 0vw 0vw 5vw;
+                margin: 8vh 0vw 0vh 5vw;
                 display: block;
                 text-align: left; 
                 rotate: 0deg;
@@ -106,7 +162,7 @@
             .column hr {
                 height: 4vw;
                 width: 80vw;
-                margin: 1vw 5vw 5vw 5vw;
+                margin: 1vh 5vw 5vh 5vw;
                 background-color: red;
                 transform: skew(-10deg, 0deg);
             }
@@ -114,80 +170,120 @@
             .event {
                 text-align: left;   
                 font-size: 1.5rem;
-                margin: 5vw 5vw 5vw 5vw;
+                margin: 5vh 5vw 5vh 5vw;
                 rotate: 0deg;
+            }
+
+            #logo {
+                margin: 5vh 0vw 5vh 5vw;
+            }
+
+            #logobox {
+                position: absolute;
+                visibility: hidden;
+            }
+
+            #logobox-top {
+                background-color: #0060a9;
+                padding: 5vh 1vw 1vh 0vw;
+                height: auto;
+                position: relative;
+                visibility: visible;
+            }
+            .partner-logo {
+                width: 50vw;
+                margin: 5vh 0vw 5vh 0vw;
+                transform: skew(-10deg, 0deg);
+            }
+
+            #footer {
+                position: relative;
+                clear: both;
+                width: 60vw;
+                text-align: right;
+                margin: 2vh 0vw 2vh 0vw;
+                color: #ffffff;
             }
         }
     </style>
 </head>
 <body>
-    <div style="z-index: 1" class="column">
-        <div class="column-body">
-            <span class="title">CONNECT</span>
-            <hr />
-            <p class="event">
-                <b>DEFCON 31 / B-Sides LV 23</b><br />
-                August 6th - 14th, 2023
-            </p>
-            <p class="event">
-                <b>B-Sides SF</b><br />
-                April 22th - 23rd, 2024
-            </p>
-            <p class="event">
-                <b>B-Sides Vancouver</b><br />
-                April 29th - 30th, 2024
-            </p>
-            <p class="event">
-                <b>TOOR Camp</b><br />
-                July 13th - 17th, 2024
-            </p>
-            <p class="event">
-                <b>Shambala</b><br />
-                July 26th - 29th, 2024
-            </p>
-            <p class="event">
-                <b>DEFCON 32 / B-Sides LV 24</b><br />
-                August 4th - 12th, 2024
-            </p>
-            <span class="title">CONTESTS</span>
-            <hr />
-            <p class="event">
-                <b>Private HTB CTF</b><br />
-                October 6th - 8th, 2023
-            </p>
+    <div>
+        <div id="logobox-top">
+            <img id="logo-top" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/e80c30ca-cf73-464c-5c0b-08e1b00df900/public" />
+        </div>
+        <div id="column-1" class="column">
+            <div class="column-body">
+                <span class="title">CONNECT</span>
+                <hr />
+                <p class="event">
+                    <b>DEFCON 31 / B-Sides LV 23</b><br />
+                    August 6th - 14th, 2023
+                </p>
+                <p class="event">
+                    <b>B-Sides SF</b><br />
+                    April 22th - 23rd, 2024
+                </p>
+                <p class="event">
+                    <b>B-Sides Vancouver</b><br />
+                    April 29th - 30th, 2024
+                </p>
+                <p class="event">
+                    <b>TOOR Camp</b><br />
+                    July 13th - 17th, 2024
+                </p>
+                <p class="event">
+                    <b>Shambala</b><br />
+                    July 26th - 29th, 2024
+                </p>
+                <p class="event">
+                    <b>DEFCON 32 / B-Sides LV 24</b><br />
+                    August 4th - 12th, 2024
+                </p>
+                <span class="title">CONTESTS</span>
+                <hr />
+                <p class="event">
+                    <b>Private HTB CTF</b><br />
+                    October 6th - 8th, 2023
+                </p>
+                <div class="column-footer"></div>
+            </div>
+        </div>
+        <div id="column-2" class="column">
+            <div id="logobox">
+                <img id="logo" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/e80c30ca-cf73-464c-5c0b-08e1b00df900/public" />
+            </div>
+            <div class="column-body">
+                <span class="title">BLOGZ</span>
+                <hr />
+                <p class="event">
+                    <b>You Wot Mate?</b><br />
+                    Author: ztk
+                </p>
+                <p class="event">
+                    <b>How to be a dirty motherfucker</b><br />
+                    Author: hl521
+                </p>
+                <p class="event">
+                    <b>Tracerats is your mom</b><br />
+                    Author: yvmqznrm
+                </p>
+                <div class="column-footer"></div>
+            </div>
+        </div>
+        <div id="column-3" class="column">
+            <div class="column-body">
+                <span class="title">PARTNERZ</span>
+                <hr />
+                <a href="https://dec0de.xyz"><img class="partner-logo" src="https://portal.dec0de.xyz/assets/img/logo.png"></a>
+                <a href="https://cloud-fortress.com"><img class="partner-logo" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/97205220-1ff3-4921-71bc-18d8e5898000/public" /></a>
+                <span class="title">DONATE</span>
+                <hr />
+                <img class="partner-logo" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/8fde34d6-e655-4d4b-f7e9-f30bc8cbe900/public" />
+                <div class="column-footer"></div>
+            </div>
         </div>
     </div>
-    <div style="z-index: 2" class="column">
-        <div id="logobox">
-            <img id="logo" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/e80c30ca-cf73-464c-5c0b-08e1b00df900/public" />
-        </div>
-        <div class="column-body">
-            <span class="title">BLOGZ</span>
-            <hr />
-            <p class="event">
-                <b>You Wot Mate?</b><br />
-                Author: ztk
-            </p>
-            <p class="event">
-                <b>How to be a dirty motherfucker</b><br />
-                Author: hl521
-            </p>
-            <p class="event">
-                <b>Tracerats is your mom</b><br />
-                Author: yvmqznrm
-            </p>
-        </div>
-    </div>
-    <div style="z-index: 1" class="column">
-        <div class="column-body">
-            <span class="title">PARTNERZ</span>
-            <hr />
-            <img class="partner-logo" src="https://portal.dec0de.xyz/assets/img/logo.png">
-            <img class="partner-logo" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/83f66aaa-badb-4632-2265-0212e69f9400/public" />
-            <span class="title">DONATE</span>
-            <hr />
-            <img class="partner-logo" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/8fde34d6-e655-4d4b-f7e9-f30bc8cbe900/public" />
-        </div>
-    </div>
+    <div id="footer">©2023 Internet Cafe</div>
 </body>
 </html>
