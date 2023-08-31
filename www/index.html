@@ -124,12 +124,18 @@
             width: 100%;
             height: 10vh;
             background-color: #f8991d;
-            font-size: 2cqw;
+            font-size: 1.5cqw;
             color: #ffffff;
             z-index: 1;
             display: flex;
             align-items: flex-end;
             justify-content: right
+        }
+
+        #footer span {
+            position: relative;
+            bottom: 1vh;
+            right: 1vh;
         }
         @media only screen and (max-aspect-ratio: 2/3) /*only screen and (-webkit-min-device-pixel-ratio: 3),
                     only screen and (min--moz-device-pixel-ratio: 3),
@@ -157,7 +163,7 @@
             }
 
             .column-footer {
-                height: 0vh;
+                height: 3vh;
             }
 
             #column-1 {
@@ -176,7 +182,7 @@
                 height: auto;
             }
             .title {
-                margin: 8vh 0vw 0vh 5vw;
+                margin: 3vh 0vw 0vh 5vw;
                 display: block;
                 text-align: right;
                 font-size: 9cqw;
@@ -187,7 +193,7 @@
             .column hr {
                 height: 0.4vw;
                 width: 75vw;
-                margin: 1vh 5vw 5vh 5vw;
+                margin: 1vh 5vw 3vh 5vw;
                 background-color: red;
                 transform: skew(-10deg, 0deg);
             }
@@ -195,7 +201,7 @@
             .event {
                 text-align: left;   
                 font-size: 4cqw;
-                margin: 5vh 5vw 5vh 5vw;
+                margin: 0vh 5vw 2vh 5vw;
                 rotate: 0deg;
             }
 
@@ -213,7 +219,7 @@
             }
             .partner-logo {
                 width: 50vw;
-                margin: 5vh 0vw 5vh 0vw;
+                margin: 2vh 0vw 0vh 0vw;
                 transform: skew(0deg, 0deg);
             }
 
@@ -223,8 +229,13 @@
                 width: 100%;
                 height: 10vh;
                 background-color: #f8991d;
-                font-size: 5cqw;
+                font-size: 4cqw;
                 color: #ffffff;
+            }
+
+            #footer span {
+                position: relative;
+                bottom: 1vh;
             }
         }
     </style>
@@ -308,6 +319,6 @@
             </div>
         </div>
     </div>
-    <div id="footer">©2023 Internet Cafe -&nbsp; <a href="https://github.com/theinternetcafe/code-of-conduct">Code Of Conduct</a></div>
+    <div id="footer"><span>©2023 Internet Cafe -&nbsp; <a href="https://github.com/theinternetcafe/code-of-conduct">Code Of Conduct</a></span></div>
 </body>
 </html>
