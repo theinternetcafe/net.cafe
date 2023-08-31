@@ -25,6 +25,11 @@
             overscroll-behavior-x: none;
         }
 
+        a {
+            color: #0060a9;
+            text-decoration: none;
+        }
+
         #inner {
             padding: 0vh 0vw 0vh 0vw;
         }
@@ -99,12 +104,19 @@
         }
 
         #logo {
+            visibility: visible;
             width: 52vw;
             margin: 0;
             transform: skew(10deg, 0deg);
             position: relative;
             left: -14vw;
-        }        
+        }  
+
+        #logo-dark {
+            visibility: hidden;
+            height: 0;
+            width: 0;
+        }      
         
         #logo-top {
             width: 80vw;
@@ -118,14 +130,21 @@
         }
 
         #logobox-top {
+            background-color: #0060a9;
             height: auto;
             position: absolute;
             visibility: hidden;
         }
 
         .partner-logo {
+            visibility: visible;
             width: 16vw;
             margin: 2.5vw 0vw 0vw 0vw;
+        }
+
+        .partner-logo-dark {
+            visibility: hidden;
+            height: 0vh;
         }
 
         #footer {
@@ -147,6 +166,75 @@
             bottom: 1vh;
             right: 1vh;
         }
+
+        @media (prefers-color-scheme: dark) {
+
+            body {
+                background-color: #03001C;
+                color: #ffffff;
+            }
+            
+            a {
+                color: #B6EADA;
+                text-decoration: none;
+            }
+
+            .column-body {
+                background-color: #111111
+            }
+
+            .column hr {
+                background-color: #B6EADA;
+            }
+
+            #logo {
+                visibility: hidden;
+                height: 0;
+                width: 0;
+            }
+
+            #logo-dark {
+                visibility: visible;
+                height: auto;
+                width: 52vw;
+                margin: 0;
+                transform: skew(10deg, 0deg);
+                position: relative;
+                left: -14vw;
+            }
+
+            #logobox-top {
+                background-color: #03001C;
+            }
+
+            #logo-top {
+                visibility: hidden;
+                height: 0;
+            }
+
+            #logo-top-dark {
+                width: 80vw;
+                height: auto;
+            }
+
+            .partner-logo {
+                visibility: hidden;
+                height: 0;
+            }
+
+            .partner-logo-dark {
+                visibility: visible;
+                height: auto;
+                width: 16vw;
+                margin: 2.5vw 0vw 0vw 0vw;
+            }
+
+            #footer {
+                background-color: #301E67;
+                color: #ffffff;
+            }
+
+        }
         @media only screen and (max-aspect-ratio: 2/3) /*only screen and (-webkit-min-device-pixel-ratio: 3),
                     only screen and (min--moz-device-pixel-ratio: 3),
                     only screen and (-o-min-device-pixel-ratio: 3/1),
@@ -155,7 +243,6 @@
             .column {
                 position: relative;
                 top: 0vh;
-                background-color: #ffffff;
                 height: auto;
                 margin: 0;
                 width: 85vw;
@@ -204,7 +291,6 @@
                 height: 0.4vw;
                 width: 75vw;
                 margin: 1vh 5vw 3vh 5vw;
-                background-color: red;
                 transform: skew(-10deg, 0deg);
             }
 
@@ -221,16 +307,22 @@
             }
 
             #logobox-top {
-                background-color: #0060a9;
                 padding: 5vh 1vw 1vh 0vw;
                 height: auto;
                 position: relative;
                 visibility: visible;
             }
+            
             .partner-logo {
                 width: 50vw;
                 margin: 2vh 0vw 0vh 0vw;
                 transform: skew(0deg, 0deg);
+            }
+
+            .partner-logo-dark {
+                height: auto;
+                width: 60vw;
+                margin: 2.5vw 0vw 0vw 0vw;
             }
 
             #footer {
@@ -238,9 +330,7 @@
                 clear: both;
                 width: 100%;
                 height: 10vh;
-                background-color: #f8991d;
                 font-size: 4cqw;
-                color: #ffffff;
             }
 
             #footer span {
@@ -253,7 +343,7 @@
 <body>
     <div id="inner">
         <div id="logobox-top">
-            <img id="logo-top" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/446125c9-f944-4166-a843-9517177f5000/public" />
+            <img id="logo-top" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/446125c9-f944-4166-a843-9517177f5000/public" /><img id="logo-top-dark" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/d56548ca-83c5-40ad-9d94-af80fabe2200/public" />
         </div>
         <div id="column-1" class="column">
             <div class="column-body">
@@ -296,6 +386,7 @@
         <div id="column-2" class="column">
             <div id="logobox">
                 <img id="logo" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/446125c9-f944-4166-a843-9517177f5000/public" />
+                <img id="logo-dark" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/d56548ca-83c5-40ad-9d94-af80fabe2200/public" />
             </div>
             <div class="column-body">
                 <span class="title">BLOGZ</span>
@@ -319,12 +410,13 @@
             <div class="column-body">
                 <span class="title">PARTNERZ</span>
                 <hr />
-                <a href="https://dec0de.xyz"><img class="partner-logo" src="https://portal.dec0de.xyz/assets/img/logo.png"></a>
-                <a href="https://cloud-fortress.com"><img class="partner-logo" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/97205220-1ff3-4921-71bc-18d8e5898000/public" /></a>
+                <a href="https://dec0de.xyz"><img class="partner-logo" src="https://portal.dec0de.xyz/assets/img/logo.png"><img class="partner-logo-dark" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/911288f0-896f-4b65-15c9-973ab796c700/public"></a>
+                <a href="https://cloud-fortress.com"><img class="partner-logo" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/720d4a7c-c1e9-4c1c-adc3-4e52b86cf000/public" /><img class="partner-logo-dark" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/c5515bd5-ddcb-466f-aa49-fa61e1592200/public" /></a>
                 <div class="column-footer"></div>
                 <span class="title">DONATE</span>
                 <hr />
                 <img class="partner-logo" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/8fde34d6-e655-4d4b-f7e9-f30bc8cbe900/public" />
+                <img class="partner-logo-dark" src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/8fde34d6-e655-4d4b-f7e9-f30bc8cbe900/public" />
                 <div class="column-footer"></div>
             </div>
         </div>
