@@ -238,6 +238,53 @@
             }
 
         }
+
+        @media (max-aspect-ratio: 2/3) and (prefers-color-scheme: dark) {
+            #logo-top-dark {
+                visibility: visible;
+                height: auto;
+            }
+
+            #logo-top {
+                visibility: hidden;
+                height: 0;
+            }
+
+            .partner-logo {
+                height: 0;
+                margin: 2vh 0vw 0vh 0vw;
+            }
+
+            .partner-logo-dark {
+                height: auto;
+                width: 50vw;
+                margin: 2vh 0vw 0vh 0vw;
+            }
+        }
+
+        @media (max-aspect-ratio: 2/3) and (prefers-color-scheme: light) {
+            #logo-top-dark {
+                visibility: hidden;
+                height: 0;
+            }
+
+            #logo-top {
+                visibility: visible;
+                height: auto;
+            }
+
+            .partner-logo {
+                height: auto;
+                width: 50vw;
+                margin: 2vh 0vw 0vh 0vw;
+            }
+
+            .partner-logo-dark {
+                height: 0;
+                margin: 2vh 0vw 0vh 0vw;
+            }
+        }
+
         @media only screen and (max-aspect-ratio: 2/3) /*only screen and (-webkit-min-device-pixel-ratio: 3),
                     only screen and (min--moz-device-pixel-ratio: 3),
                     only screen and (-o-min-device-pixel-ratio: 3/1),
@@ -254,8 +301,6 @@
             }
 
             .column-body {
-                position: relative;
-                top: 0vh;
                 width: 100%;
                 margin: 0;
                 padding: 0;
@@ -275,12 +320,18 @@
                 z-index: 2;
                 padding: 0;
                 height: auto;
+                margin: 0;
+            }
+
+            #column-2 .column-body {
+                margin-top: 0vh;
             }
 
             #column-3 {
                 z-index: 2;
                 height: auto;
             }
+
             .title {
                 margin: 3vh 0vw 0vh 5vw;
                 display: block;
@@ -303,9 +354,17 @@
                 margin: 0vh 5vw 2vh 5vw;
                 rotate: 0deg;
             }
-
+            
             #logobox {
                 position: absolute;
+                visibility: hidden;
+            }
+            
+            #logo {
+                visibility: hidden;
+            }
+
+            #logo-dark {
                 visibility: hidden;
             }
 
@@ -314,18 +373,6 @@
                 height: auto;
                 position: relative;
                 visibility: visible;
-            }
-            
-            .partner-logo {
-                width: 50vw;
-                margin: 2vh 0vw 0vh 0vw;
-                transform: skew(0deg, 0deg);
-            }
-
-            .partner-logo-dark {
-                height: auto;
-                width: 60vw;
-                margin: 2.5vw 0vw 0vw 0vw;
             }
 
             #footer {
