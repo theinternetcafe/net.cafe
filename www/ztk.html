@@ -1,6 +1,18 @@
 <html>
 <head>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        svg {
+  width: 80vmin;
+  overflow: visible;
+}
+
+path {
+  opacity: var(--show, 0);
+  transition: opacity 0.2s;
+}
+
+    </style>
 </head>
 <body>
 <script type="text/javascript">
@@ -10,7 +22,6 @@ const markdownString = `
 Discord: ztk.
 Twitter: @ztk669
 Sites: dc669.org, net.cafe
-
 
 ## Who I am
 * Software Engineer
@@ -33,5 +44,23 @@ Sites: dc669.org, net.cafe
 // Append to the document body
 document.body.innerHTML = marked.parse(markdownString);
 </script>
+<svg
+viewBox="0 0 100 100"
+xmlns="http://www.w3.org/2000/svg"
+>
+<path
+  id="circlePath"
+  d="
+    M 10, 50
+    a 40,40 0 1,1 80,0
+    40,40 0 1,1 -80,0
+  "
+/>
+<text>
+  <textPath href="#circlePath" textLength={Math.floor(Math.PI * 2 * RADIUS)}>
+    Wow this shit is sick
+  </textPath>
+</text>
+</svg>
 </body>
 </html>
