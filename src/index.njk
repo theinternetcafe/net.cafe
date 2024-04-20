@@ -1,0 +1,138 @@
+---
+pagination:
+  data: site.events
+  size: 6
+  alias: events
+---
+<html>
+  <head>
+    <title>{{ site.title }}</title>
+    <meta property="og:title" content="{{ site.title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ site.url }}" />
+    <meta
+      property="og:image"
+      content="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/8db64013-2d89-4029-b218-7196b516b500/public"
+    />
+    <meta property="og:description" content="{{ site.description }}" />
+    <meta name="theme-color" content="#0060a9" />
+
+    <!-- Include this to make the og:image larger -->
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div id="inner">
+      <div id="logobox-top">
+        <img
+          id="logo-top"
+          src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/a619d3a3-d980-4ee8-2881-212bef6b2e00/public"
+        /><img
+          id="logo-top-dark"
+          src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/d56548ca-83c5-40ad-9d94-af80fabe2200/public"
+        />
+      </div>
+      <div id="column-1" class="column">
+        <div class="column-body">
+          <span class="title">CONNECT</span>
+          <hr />
+          {% for event in events %} {% if event.link %}
+          <a href="{{ event.link }}">
+            {% endif %}
+            <p class="event">
+              <b>{{ event.name }}</b
+              ><br />
+              {{ event.when }}
+            </p>
+            {% if event.link %}
+          </a>
+          {% endif %} {% endfor %}
+          <div class="column-footer"></div>
+          <span class="title">CONTESTS</span>
+          <hr />
+          <p class="event">
+            <b>Private HTB CTF</b><br />
+            October 6th - 8th, 2023
+          </p>
+          <div class="column-footer"></div>
+        </div>
+      </div>
+      <div id="column-2" class="column">
+        <div id="logobox">
+          <img
+            id="logo"
+            src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/a619d3a3-d980-4ee8-2881-212bef6b2e00/public"
+          />
+          <img
+            id="logo-dark"
+            src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/d56548ca-83c5-40ad-9d94-af80fabe2200/public"
+          />
+        </div>
+        <div class="column-body">
+          <span class="title">BLOGZ</span>
+          <hr />
+          {% for post in collections.posts %}
+          <a href="{{ post.url }}">
+            <p class="event">
+              <b>{{ post.data.title }}</b
+              ><br />
+              Author: {{ post.data.author }}
+            </p>
+          </a>
+          {% endfor %}
+          <div class="column-footer"></div>
+        </div>
+      </div>
+      <div id="column-3" class="column">
+        <div class="column-body">
+          <span class="title">PARTNERZ</span>
+          <hr />
+          <a href="https://dec0de.xyz"
+            ><img
+              class="partner-logo"
+              src="https://portal.dec0de.xyz/assets/img/logo.png" /><img
+              class="partner-logo-dark"
+              src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/911288f0-896f-4b65-15c9-973ab796c700/public"
+          /></a>
+          <a href="https://cloud-fortress.com"
+            ><img
+              class="partner-logo"
+              src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/720d4a7c-c1e9-4c1c-adc3-4e52b86cf000/public" /><img
+              class="partner-logo-dark"
+              src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/c5515bd5-ddcb-466f-aa49-fa61e1592200/public"
+          /></a>
+          <div class="column-footer"></div>
+          <iframe
+            src="https://discord.com/widget?id=798707539067011104&theme=dark"
+            width="100%"
+            height="400"
+            allowtransparency="true"
+            frameborder="0"
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+          ></iframe>
+          <span class="title">DONATE</span>
+          <hr />
+          <a href="https://paypal.me/theinternetcafe"
+            ><img
+              class="partner-logo"
+              src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/8fde34d6-e655-4d4b-f7e9-f30bc8cbe900/public" />
+            <img
+              class="partner-logo-dark"
+              src="https://imagedelivery.net/2XOKk6tqcY0Sf5Iqe-LStg/8fde34d6-e655-4d4b-f7e9-f30bc8cbe900/public"
+          /></a>
+          <div class="column-footer"></div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <span class="copyleft">&copy;</span
+      ><span
+        >2024 Internet Cafe -&nbsp;
+        <a href="https://github.com/theinternetcafe/code-of-conduct"
+          >Code Of Conduct</a
+        ></span
+      >
+    </div>
+  </body>
+</html>

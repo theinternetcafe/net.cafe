@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "bunx @11ty/eleventy",
+    "dev": "bunx @11ty/eleventy --serve --watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
+}
