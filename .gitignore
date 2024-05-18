@@ -1,0 +1,5 @@
+# dependencies
+node_modules/
+
+# built site
+_site/
