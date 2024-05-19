@@ -21,9 +21,9 @@ bun run dev # equivalent to npx @11ty/eleventy --serve --watch
 
 ## Todo (not in order)
 
-- [ ] Make a blog/post template
+- [x] Make a blog/post template
 - [ ] Members pages
-- [ ] Make components (header, footer, etc.)
+- [x] Make components (header, footer, etc.)
 - [ ] Add dates to blog posts
 - [ ] Look at CSS (Use SCSS at some point?)
 - [ ] Add links to connect/contests (maybe)

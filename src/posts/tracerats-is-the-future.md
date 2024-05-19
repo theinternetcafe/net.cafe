@@ -2,10 +2,13 @@
 title: Tracerats is the future
 author: yvmqznrm
 date: 2024-03-20
+layout: layouts/post.njk
 ---
 
 
 Nam efficitur, sapien id malesuada accumsan, tortor turpis tincidunt enim, in varius mauris ligula a turpis. Duis eu neque tincidunt, elementum urna vel, dictum leo. Curabitur finibus interdum odio, semper ultricies urna gravida rutrum. Sed lobortis, massa id vestibulum volutpat, ex nulla condimentum justo, id dapibus erat metus a dolor. Nam nunc purus, egestas non risus sed, faucibus gravida eros. Maecenas sagittis pulvinar metus, at rhoncus justo dictum ac. Proin vel aliquet tellus. Duis vulputate, urna non gravida tincidunt, tellus diam bibendum libero, sed lacinia purus sapien non erat. Etiam et imperdiet mi. Pellentesque vel scelerisque sapien. Sed at vehicula elit. Aenean et lectus nec nulla commodo elementum.
+
+<img class="dark" src="/img/tracerats_tiny.png#right" alt="Tracerats Logo">
 
 Vivamus tempus malesuada mauris porta pharetra. Vestibulum laoreet fringilla congue. Maecenas ultricies eros eget urna efficitur tristique. Duis lobortis congue sollicitudin. Cras ornare sapien et odio blandit malesuada. Sed sed nunc sed dui scelerisque sollicitudin. Aliquam erat volutpat.
 

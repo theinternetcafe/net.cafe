@@ -4,27 +4,6 @@
   "url": "https://net.cafe",
   "events": [
     {
-      "name": "Scale 21x",
-      "when": "March 14th - 17th, 2024",
-      "link": "https://www.socallinuxexpo.org/scale/21x"
-    },
-    {
-      "name": "LinuxFest Northwest",
-      "when": "April 26th - 28th, 2024"
-    },
-    {
-      "name": "BSides SF",
-      "when": "May 4th - 5th, 2024"
-    },
-    {
-      "name": "ObservabilityCON Bay Area",
-      "when": "May 7th, 2024"
-    },
-    {
-      "name": "BSides Vancouver",
-      "when": "May 26th - 27th, 2024"
-    },
-    {
       "name": "TOOR Camp",
       "when": "July 13th - 17th, 2024"
     },
@@ -33,12 +12,8 @@
       "when": "July 26th - 29th, 2024"
     },
     {
-      "name": "DEFCON 32 / BSides LV 24",
-      "when": "August 4th - 12th, 2024"
-    },
-    {
-      "name": "Pumpcon",
-      "when": "October ?? - ??, 2024"
+      "name": "Chaos Communication Camp",
+      "when": "Late July, 2027"
     }
   ]
 }

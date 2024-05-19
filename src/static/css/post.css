@@ -1,0 +1,106 @@
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #0060a9;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5em;
+  font-style: italic;
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0.1em;
+  margin-top: auto;
+}
+
+span {
+  font-weight: 500;
+}
+
+.col span {
+  text-decoration: underline;
+}
+
+.page {
+  background-color: white;
+  color: black;
+  padding: 0.5em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.logo-footer {
+  position: relative;
+  top: -1em;
+  width: 7em;
+  height: 7em;
+}
+
+img[src*='#left'] {
+  float: left;
+  padding: 1em;
+}
+img[src*='#right'] {
+  float: right;
+  padding: 1em;
+}
+img[src*='#center'] {
+  display: block;
+  margin: auto;
+}
+/* We accomodate to the brits 😎 */
+img[src*='#centre'] {
+  display: block;
+  margin: auto;
+}
+
+@media (prefers-color-scheme: light) {
+  .light {
+      visibility: visible;
+  }
+
+  .dark {
+    position: absolute;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #03001c;
+    color: #ffffff;
+  }
+
+  .dark {
+    visibility: visible;
+  }
+  
+  .light {
+    position: absolute;
+    visibility: hidden;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+  }
+
+  a {
+    color: #b6eada;
+    text-decoration: none;
+  }
+
+  #footer {
+    background-color: #301e67;
+    color: #ffffff;
+  }
+}

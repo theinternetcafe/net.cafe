@@ -2,6 +2,7 @@
 title: How to be leet
 author: hl521
 date: 2023-05-01
+layout: layouts/post.njk
 ---
 
 
