@@ -1,0 +1,39 @@
+name: Build and Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Setup Bun
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      # Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: bun install
+
+      # Build the site
+      - name: Build Site
+        run: bunx @11ty/eleventy
+
+      # Deploy to Cloudflare Pages
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ed683f29f555e6466caa39a27c381a1f
+          projectName: net-cafe
+          directory: _site
+
+
