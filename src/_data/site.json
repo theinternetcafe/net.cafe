@@ -4,12 +4,20 @@
   "url": "https://net.cafe",
   "events": [
     {
-      "name": "TOOR Camp",
-      "when": "July 13th - 17th, 2024"
+      "name": "Toorcamp",
+      "when": "Late June, 2025"
     },
     {
       "name": "Shambhala",
-      "when": "July 26th - 29th, 2024"
+      "when": "Summer, 2025"
+    },
+    {
+      "name": "DEF CON 33",
+      "when": "7th - 10th Aug, 2025"
+    },
+    {
+      "name": "Electromagnetic Field Camp",
+      "when": "Summer, 2026"
     },
     {
       "name": "Chaos Communication Camp",
