@@ -1,0 +1,30 @@
+name: pr-check
+
+on:
+  pull_request_target:
+    branches:
+      - master
+      - 'releases/*'
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Setup Bun
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      # Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: bun install
+
+      # Build the site
+      - name: Build Site
+        run: bunx @11ty/eleventy
+
