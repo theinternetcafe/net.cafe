@@ -27,4 +27,3 @@ jobs:
       # Build the site
       - name: Build Site
         run: bunx @11ty/eleventy
-
