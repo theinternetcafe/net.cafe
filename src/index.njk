@@ -44,6 +44,9 @@ pagination:
         audio1.volume = 1;
         audio2.volume = 0;
         
+        // Initialize backup audio but don't load it yet
+        audio2.preload = 'none';
+        
         // Seamless stream restart with crossfade
         function restartStream() {
           if (!isPlaying) return;
@@ -68,8 +71,14 @@ pagination:
               
               if (step >= fadeSteps) {
                 clearInterval(fade);
+                
+                // Fully disconnect the old stream
                 currentAudio.pause();
+                currentAudio.src = '';
+                currentAudio.load();
                 currentAudio.volume = 0;
+                
+                // Set backup as the new current
                 backupAudio.volume = 1;
                 
                 // Swap roles for next refresh
@@ -182,8 +191,7 @@ pagination:
             <audio id="radio-stream-1" preload="metadata">
               <source src="https://radio.net.cafe/stream.mp3" type="audio/mpeg">
             </audio>
-            <audio id="radio-stream-2" preload="metadata">
-              <source src="https://radio.net.cafe/stream.mp3" type="audio/mpeg">
+            <audio id="radio-stream-2" preload="none">
             </audio>
             <div class="player-controls">
               <button id="play-button" aria-label="Play radio">▶</button>
