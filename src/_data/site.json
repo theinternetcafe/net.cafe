@@ -4,20 +4,20 @@
   "url": "https://net.cafe",
   "events": [
     {
-      "name": "Toorcamp",
-      "when": "Late June, 2025"
-    },
-    {
-      "name": "Shambhala",
-      "when": "Summer, 2025"
-    },
-    {
-      "name": "DEF CON 33",
-      "when": "7th - 10th Aug, 2025"
+      "name": "BSidesSF 2026",
+      "when": "21st - 22nd March, 2026"
     },
     {
       "name": "Electromagnetic Field Camp",
-      "when": "Summer, 2026"
+      "when": "16th – 19th July, 2026"
+    },
+    {
+      "name": "Shambhala",
+      "when": "24th - 27th July, 2026"
+    },
+    {
+      "name": "DEF CON 34",
+      "when": "6th - 9th Aug, 2026"
     },
     {
       "name": "Chaos Communication Camp",
