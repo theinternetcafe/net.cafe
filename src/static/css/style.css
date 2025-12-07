@@ -132,7 +132,14 @@ a {
   text-align: center;
 }
 
-#play-button {
+.player-controls {
+  display: flex;
+  gap: 0.5vw;
+  justify-content: center;
+  align-items: center;
+}
+
+#play-button, #refresh-button {
   background: #ffffff;
   border: 2px solid #0060a9;
   border-radius: 50%;
@@ -148,13 +155,28 @@ a {
   color: #0060a9;
 }
 
-#play-button:hover {
+#refresh-button {
+  width: 2.5vw;
+  height: 2.5vw;
+  font-size: 1.3vw;
+}
+
+#play-button:hover, #refresh-button:hover {
   background: #f0f0f0;
   transform: scale(1.1);
 }
 
-#play-button:active {
+#play-button:active, #refresh-button:active {
   transform: scale(0.95);
+}
+
+#refresh-button:active {
+  animation: spin 0.5s ease-out;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .stream-info {
@@ -254,13 +276,13 @@ a {
     color: #ffffff;
   }
 
-  #play-button {
+  #play-button, #refresh-button {
     background: #111111;
     border-color: #b6eada;
     color: #b6eada;
   }
 
-  #play-button:hover {
+  #play-button:hover, #refresh-button:hover {
     background: #1a1a1a;
   }
 }

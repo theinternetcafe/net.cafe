@@ -23,27 +23,96 @@ pagination:
     <link rel="stylesheet" href="/css/style.css" />
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        const audio = document.getElementById('radio-stream');
+        const audio1 = document.getElementById('radio-stream-1');
+        const audio2 = document.getElementById('radio-stream-2');
         const playButton = document.getElementById('play-button');
+        const refreshButton = document.getElementById('refresh-button');
         const listenersEl = document.getElementById('listeners-count');
         const titleEl = document.getElementById('stream-title');
+        const streamUrl = 'https://radio.net.cafe/stream.mp3';
+        let hasAutoPlayed = false;
+        let currentAudio = audio1;
+        let backupAudio = audio2;
+        let isPlaying = false;
         
-        if (playButton && audio) {
-          playButton.addEventListener('click', function() {
-            if (audio.paused) {
-              audio.play();
-              playButton.textContent = '⏸';
-              playButton.setAttribute('aria-label', 'Pause radio');
-            } else {
-              audio.pause();
-              playButton.textContent = '▶';
-              playButton.setAttribute('aria-label', 'Play radio');
-            }
+        if (!audio1 || !audio2 || !playButton) {
+          console.error('Audio elements not found');
+          return;
+        }
+        
+        // Set initial volumes
+        audio1.volume = 1;
+        audio2.volume = 0;
+        
+        // Seamless stream restart with crossfade
+        function restartStream() {
+          if (!isPlaying) return;
+          
+          // Load fresh stream in the backup (which is currently silent)
+          backupAudio.src = streamUrl + '?t=' + Date.now();
+          backupAudio.load();
+          backupAudio.volume = 0;
+          
+          // Start playing backup
+          backupAudio.play().then(() => {
+            // Crossfade from current to backup
+            const fadeSteps = 20;
+            const fadeInterval = 50; // ms
+            let step = 0;
+            
+            const fade = setInterval(() => {
+              step++;
+              const progress = step / fadeSteps;
+              currentAudio.volume = Math.max(0, 1 - progress);
+              backupAudio.volume = Math.min(1, progress);
+              
+              if (step >= fadeSteps) {
+                clearInterval(fade);
+                currentAudio.pause();
+                currentAudio.volume = 0;
+                backupAudio.volume = 1;
+                
+                // Swap roles for next refresh
+                const temp = currentAudio;
+                currentAudio = backupAudio;
+                backupAudio = temp;
+              }
+            }, fadeInterval);
+          }).catch(e => console.log('Crossfade failed:', e));
+        }
+        
+        // Play/Pause button
+        playButton.addEventListener('click', function() {
+          if (!isPlaying) {
+            currentAudio.play().catch(e => console.log('Play error:', e));
+            isPlaying = true;
+            playButton.textContent = '⏸';
+            playButton.setAttribute('aria-label', 'Pause radio');
+          } else {
+            currentAudio.pause();
+            backupAudio.pause();
+            isPlaying = false;
+            playButton.textContent = '▶';
+            playButton.setAttribute('aria-label', 'Play radio');
+          }
+        });
+        
+        // Refresh button
+        if (refreshButton) {
+          refreshButton.addEventListener('click', function() {
+            restartStream();
           });
         }
         
-        // Fetch stream metadata
-        let hasAutoPlayed = false;
+        // Auto-restart every 5 minutes to prevent buffer drift
+        setInterval(function() {
+          if (isPlaying) {
+            console.log('Auto-refreshing stream');
+            restartStream();
+          }
+        }, 5 * 60 * 1000);
+        
+        // Fetch and update stream metadata
         async function updateMetadata() {
           try {
             const response = await fetch('https://radio.net.cafe/status-json.xsl');
@@ -58,23 +127,23 @@ pagination:
               titleEl.textContent = source.title;
             }
             
-            // Auto-play if stream is live (has a title) and hasn't auto-played yet
-            if (!hasAutoPlayed && source.title && audio.paused) {
-              audio.play().then(() => {
+            // Auto-play if stream is live
+            if (!hasAutoPlayed && source.title && !isPlaying) {
+              currentAudio.play().then(() => {
+                isPlaying = true;
                 playButton.textContent = '⏸';
                 playButton.setAttribute('aria-label', 'Pause radio');
                 hasAutoPlayed = true;
               }).catch(() => {
-                // Autoplay was blocked by browser
-                console.log('Autoplay blocked by browser');
+                console.log('Autoplay blocked');
               });
             }
           } catch (e) {
-            console.log('Could not fetch stream metadata');
+            console.log('Metadata fetch error:', e);
           }
         }
         
-        // Update metadata on load and every 10 seconds
+        // Update metadata every 10 seconds
         updateMetadata();
         setInterval(updateMetadata, 10000);
       });
@@ -178,10 +247,16 @@ pagination:
           <span class="title">RADIO</span>
           <hr />
           <div class="radio-player">
-            <audio id="radio-stream" preload="none">
+            <audio id="radio-stream-1" preload="metadata">
               <source src="https://radio.net.cafe/stream.mp3" type="audio/mpeg">
             </audio>
-            <button id="play-button" aria-label="Play radio">▶</button>
+            <audio id="radio-stream-2" preload="metadata">
+              <source src="https://radio.net.cafe/stream.mp3" type="audio/mpeg">
+            </audio>
+            <div class="player-controls">
+              <button id="play-button" aria-label="Play radio">▶</button>
+              <button id="refresh-button" aria-label="Refresh stream" title="Refresh stream">↻</button>
+            </div>
             <p class="stream-info">
               <span id="listeners-count">—</span><br>
               <span id="stream-title" class="stream-title"></span>
