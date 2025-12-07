@@ -127,6 +127,49 @@ a {
   margin: 2.5vw 0vw 0vw 0vw;
 }
 
+.radio-player {
+  margin: 2.5vw 0vw 0vw 0vw;
+  text-align: center;
+}
+
+#play-button {
+  background: #ffffff;
+  border: 2px solid #0060a9;
+  border-radius: 50%;
+  width: 3vw;
+  height: 3vw;
+  font-size: 1.5vw;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+  color: #0060a9;
+}
+
+#play-button:hover {
+  background: #f0f0f0;
+  transform: scale(1.1);
+}
+
+#play-button:active {
+  transform: scale(0.95);
+}
+
+.stream-info {
+  margin: 1vw 0vw 0vw 0vw;
+  font-size: 1.2cqw;
+  text-align: center;
+  font-style: normal;
+  line-height: 1.4;
+}
+
+.stream-title {
+  font-weight: bold;
+  font-style: italic;
+}
+
 #footer {
   position: fixed;
   bottom: 0;
@@ -209,6 +252,16 @@ a {
   #footer {
     background-color: #301e67;
     color: #ffffff;
+  }
+
+  #play-button {
+    background: #111111;
+    border-color: #b6eada;
+    color: #b6eada;
+  }
+
+  #play-button:hover {
+    background: #1a1a1a;
   }
 }
 
