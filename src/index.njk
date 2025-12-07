@@ -176,12 +176,24 @@ pagination:
           </a>
           {% endif %} {% endfor %}
           <div class="column-footer"></div>
-          <span class="title">CONTESTS</span>
+          <span class="title">RADIO</span>
           <hr />
-          <p class="event">
-            <b>Private HTB CTF</b><br />
-            October 6th - 8th, 2023
-          </p>
+          <div class="radio-player">
+            <audio id="radio-stream-1" preload="metadata">
+              <source src="https://radio.net.cafe/stream.mp3" type="audio/mpeg">
+            </audio>
+            <audio id="radio-stream-2" preload="metadata">
+              <source src="https://radio.net.cafe/stream.mp3" type="audio/mpeg">
+            </audio>
+            <div class="player-controls">
+              <button id="play-button" aria-label="Play radio">▶</button>
+              <button id="refresh-button" aria-label="Refresh stream" title="Refresh stream">↻</button>
+            </div>
+            <p class="stream-info">
+              <span id="listeners-count">—</span><br>
+              <span id="stream-title" class="stream-title"></span>
+            </p>
+          </div>
           <div class="column-footer"></div>
         </div>
       </div>
@@ -243,25 +255,6 @@ pagination:
               class="partner-logo dark invert"
               src="/img/cloud-fortress-logo.png"
           /></a>
-          <div class="column-footer"></div>
-          <span class="title">RADIO</span>
-          <hr />
-          <div class="radio-player">
-            <audio id="radio-stream-1" preload="metadata">
-              <source src="https://radio.net.cafe/stream.mp3" type="audio/mpeg">
-            </audio>
-            <audio id="radio-stream-2" preload="metadata">
-              <source src="https://radio.net.cafe/stream.mp3" type="audio/mpeg">
-            </audio>
-            <div class="player-controls">
-              <button id="play-button" aria-label="Play radio">▶</button>
-              <button id="refresh-button" aria-label="Refresh stream" title="Refresh stream">↻</button>
-            </div>
-            <p class="stream-info">
-              <span id="listeners-count">—</span><br>
-              <span id="stream-title" class="stream-title"></span>
-            </p>
-          </div>
           <div class="column-footer"></div>
           <span class="title">DONATE</span>
           <hr />

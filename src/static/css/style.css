@@ -440,4 +440,25 @@ a {
     position: relative;
     bottom: 1vh;
   }
+
+  .player-controls {
+    gap: 2vw;
+  }
+
+  #play-button, #refresh-button {
+    width: 15vw;
+    height: 15vw;
+    font-size: 7vw;
+  }
+
+  #refresh-button {
+    width: 12vw;
+    height: 12vw;
+    font-size: 6vw;
+  }
+
+  .stream-info {
+    font-size: 3.5cqw;
+    margin: 2vh 0vw 0vw 0vw;
+  }
 }
