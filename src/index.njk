@@ -83,43 +83,40 @@ pagination:
           backupAudio.load();
           backupAudio.volume = 0;
           
-          // Start playing backup and wait briefly to buffer
+          // Start playing backup and crossfade immediately
           backupAudio.play().then(() => {
             console.log('Backup stream playing, starting crossfade...');
             
-            // Wait 1.8 seconds (reduced from 2s by 200ms) for the new stream to catch up
-            setTimeout(() => {
-              // Crossfade from current to backup
-              const fadeSteps = 10;
-              const fadeInterval = 30; // ms - 300ms total fade
-              let step = 0;
+            // Crossfade from current to backup
+            const fadeSteps = 10;
+            const fadeInterval = 30; // ms - 300ms total fade
+            let step = 0;
+            
+            const fade = setInterval(() => {
+              step++;
+              const progress = step / fadeSteps;
+              currentAudio.volume = Math.max(0, 1 - progress);
+              backupAudio.volume = Math.min(1, progress);
               
-              const fade = setInterval(() => {
-                step++;
-                const progress = step / fadeSteps;
-                currentAudio.volume = Math.max(0, 1 - progress);
-                backupAudio.volume = Math.min(1, progress);
+              if (step >= fadeSteps) {
+                clearInterval(fade);
                 
-                if (step >= fadeSteps) {
-                  clearInterval(fade);
-                  
-                  // Properly disconnect the old stream
-                  currentAudio.pause();
-                  currentAudio.removeAttribute('src');
-                  currentAudio.load();
-                  currentAudio.volume = 0;
-                  
-                  backupAudio.volume = 1;
+                // Properly disconnect the old stream
+                currentAudio.pause();
+                currentAudio.removeAttribute('src');
+                currentAudio.load();
+                currentAudio.volume = 0;
                 
-                  // Swap roles for next refresh
-                  const temp = currentAudio;
-                  currentAudio = backupAudio;
-                  backupAudio = temp;
-                  
-                  console.log('Crossfade complete');
-                }
-              }, fadeInterval);
-            }, 1800); // 1.8 second delay (200ms less than before)
+                backupAudio.volume = 1;
+              
+                // Swap roles for next refresh
+                const temp = currentAudio;
+                currentAudio = backupAudio;
+                backupAudio = temp;
+                
+                console.log('Crossfade complete');
+              }
+            }, fadeInterval);
           }).catch(e => {
             console.error('Crossfade failed:', e);
             // If crossfade fails, ensure current audio keeps playing
